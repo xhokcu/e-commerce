@@ -1,7 +1,13 @@
 import * as React from 'react';
 import Svg, { Path, Mask, G } from 'react-native-svg';
+import { ISvgProps } from '@types/ISvgProps';
+import { theme } from '@theme/theme';
 
-function HomeIcon() {
+const { color } = theme.components;
+
+function HomeIcon(props: ISvgProps) {
+  const { filled } = props;
+
   return (
     <Svg
       width={24}
@@ -13,9 +19,6 @@ function HomeIcon() {
     >
       <Mask
         id="a"
-        style={{
-          maskType: 'alpha',
-        }}
         maskUnits="userSpaceOnUse"
         x={0}
         y={0}
@@ -27,7 +30,7 @@ function HomeIcon() {
       <G mask="url(#a)">
         <Path
           d="M6 19h3v-6h6v6h3v-9l-6-4.5L6 10v9zm-2 2V9l8-6 8 6v12h-7v-6h-2v6H4z"
-          fill="#98A7AE"
+          fill={filled || '#000'}
         />
       </G>
     </Svg>

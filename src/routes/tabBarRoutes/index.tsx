@@ -7,27 +7,41 @@ import HomeIcon from '@assets/svg/HomeIcon';
 import FavoriteIcon from '@assets/svg/FavoriteIcon';
 import CartIcon from '@assets/svg/CartIcon';
 import ProfileIcon from '@assets/svg/ProfileIcon';
+import { theme } from '@theme/theme';
+
+const { color } = theme.components;
+
+const activeColor = color.primary.green[50];
+const inactiveColor = color.primary.gray[50];
 
 const TabBarRoutes = [
   {
     name: RouteNames.home,
     component: HomeScreen,
-    icon: <HomeIcon />,
+    icon: ({ focused }: { focused: boolean }) => (
+      <HomeIcon filled={focused ? activeColor : inactiveColor} />
+    ),
   },
   {
     name: RouteNames.favorites,
     component: FavoriteScreen,
-    icon: <FavoriteIcon />,
+    icon: ({ focused }: { focused: boolean }) => (
+      <FavoriteIcon filled={focused ? activeColor : inactiveColor} />
+    ),
   },
   {
     name: RouteNames.cart,
     component: CartScreen,
-    icon: <CartIcon />,
+    icon: ({ focused }: { focused: boolean }) => (
+      <CartIcon filled={focused ? activeColor : inactiveColor} />
+    ),
   },
   {
     name: RouteNames.profile,
     component: ProfileScreen,
-    icon: <ProfileIcon />,
+    icon: ({ focused }: { focused: boolean }) => (
+      <ProfileIcon filled={focused ? activeColor : inactiveColor} />
+    ),
   },
 ];
 

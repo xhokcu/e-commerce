@@ -1,5 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarRoutes from '@routes/tabBarRoutes';
+import { theme } from '@theme/theme';
+import { View } from 'react-native';
+
+const { color } = theme.components;
 
 function BottomTabBar() {
   const Tab = createBottomTabNavigator();
@@ -11,7 +15,11 @@ function BottomTabBar() {
           name={route.name}
           component={route.component}
           options={{
-            tabBarIcon: () => route.icon,
+            tabBarActiveTintColor: color.primary.green[50],
+            tabBarIcon: ({ focused }) => <View>{route.icon({ focused })}</View>,
+            headerStyle: {
+              backgroundColor: color.primary.gray[20],
+            },
           }}
         />
       ))}

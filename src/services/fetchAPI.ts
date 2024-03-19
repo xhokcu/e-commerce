@@ -25,3 +25,13 @@
 //   'https://www.rijksmuseum.nl/api/nl/collection?key=[api-key]&involvedMaker=Rembrandt+van+Rijn',
 //   //   {},
 // );
+
+interface IFecthDataProps {
+  url: string;
+}
+
+export async function fetchData(url: string) {
+  const response = await fetch(url);
+  const json = await response.json();
+  return json;
+}
